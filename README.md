@@ -28,8 +28,9 @@ Make scripts executable:
 chmod +x wraith powerups.sh interface.sh
 
 Add the game folder to your PATH for easy access:
-echo 'export PATH="$PWD:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+
+sudo cp wraith /usr/local/bin
+
 
 ---
 
