@@ -19,7 +19,7 @@ WRAITH is a cyber-themed, terminal-based text adventure game written in Bash scr
 ## Installation
 
 Clone this repository:
-git clone https://github.com/yourusername/wraith.git
+git clone https://github.com/BADDGER7/Wraith
 
 cd wraith
 
