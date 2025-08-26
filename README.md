@@ -57,12 +57,6 @@ Contributions are welcome! Feel free to fork this repo, make changes, and submit
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 ## Credits
 
 Developed by Parth Namdev Patil.
