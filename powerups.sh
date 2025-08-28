@@ -1,20 +1,23 @@
 #!/bin/bash
 
+# Power-up types
+powerup_pool=("A" "D" "H" "S") # A: Attack, D: Defense, H: Heal, S: Dodge
+max_powerups=2
+active_powerups=()
 
-
-
+# Quiz database
 questions=(
 "Which command lists all active network connections?"
 "What command updates the package list in Kali Linux?"
 "Which command is used to change directories in the shell?"
 "What command is used to copy files?"
 "Which command is used to display the manual of other commands?"
-"What command searches text in files?"
+"Which command searches text in files?"
 "Which command displays the current working directory?"
 "What command shows disk usage?"
 "What command lists running processes?"
 "Which command is used to create directories?"
-"What command removes files?"
+"Which command removes files?"
 "What command shows IP addresses assigned to network interfaces?"
 "What command is used to display contents of a file?"
 "Which command moves or renames files?"
@@ -30,7 +33,6 @@ questions=(
 "Which malware disguises itself as legitimate software but is malicious?"
 "Which malware exploits vulnerabilities in software to infiltrate a system?"
 )
-
 options=(
 "a) ls\nb) netstat\nc) pwd\nd) ifconfig"
 "a) apt-get update\nb) apt-get upgrade\nc) apt-get install\nd) apt-get remove"
@@ -58,40 +60,6 @@ options=(
 "a) malware\nb) trojan\nc) worm\nd) virus"
 "a) exploit\nb) rootkit\nc) spyware\nd) ransomware"
 )
-
-idx=$(( RANDOM % ${#questions[@]} ))
-
-# Ask the question
-echo "Kali Linux Challenge:"
-echo "${questions[$idx]}"
-echo -e "${options[$idx]}"
-
-# Read user answer
-read -p "Your answer (a/b/c/d): " user_answer
-
-# Check answer (case insensitive)
-if [[ "${user_answer,,}" == "${answers[$idx]}" ]]; then
-    echo "Correct! You earn a bonus."
-    exit 0
-else
-    echo "Incorrect. The correct answer was: ${answers[$idx]}"
-    exit 1
-fi
-Save this as kali_quiz.sh and make it executable (chmod +x kali_quiz.sh).
-
-Integration idea:
-From your main WRAITH game script, call it like this:
-
-bash
-bash kali_quiz.sh
-quiz_result=$?
-
-if [[ $quiz_result -eq 0 ]]; then
-    # correct answer - grant extra power-up or buff
-else
-    # wrong answer - perhaps minor penalty or no reward
-fi
-
 answers=(
 "b" "a" "a" "c" "a"
 "a" "b" "b" "a" "b"
@@ -99,3 +67,26 @@ answers=(
 "a" "a" "c" "a" "a"
 "b" "a" "a" "b" "a"
 )
+
+# Select random quiz
+idx=$(( RANDOM % ${#questions[@]} ))
+echo "Kali Linux Challenge:"
+echo "${questions[$idx]}"
+echo -e "${options[$idx]}"
+read -p "Your answer (a/b/c/d): " user_answer
+
+if [[ "${user_answer,,}" == "${answers[$idx]}" ]]; then
+    echo "Correct! Power-ups granted:"
+    while (( ${#active_powerups[@]} < max_powerups )); do
+        pu="${powerup_pool[$RANDOM % ${#powerup_pool[@]}]}"
+        if [[ ! " ${active_powerups[*]} " =~ " $pu " ]]; then
+            active_powerups+=("$pu")
+            echo "Power-up: $pu"
+        fi
+    done
+    exit 0
+else
+    echo "Incorrect. The correct answer was: ${answers[$idx]}"
+    exit 1
+fi
+
