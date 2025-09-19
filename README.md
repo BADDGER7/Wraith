@@ -1,6 +1,6 @@
 # WRAITH
 
-WRAITH is a cyber-themed, terminal-based text adventure game written in Bash scripting. Play as a Malware Knight fighting through waves of malware bosses to secure the digital realm. Integrating turn-based combat with educational Kali Linux quizzes, WRAITH combines fun with cybersecurity learning.
+WRAITH is a cyber-themed, terminal-based text adventure game written in Bash scripting. Play as a Malware Knight Guardian fighting through waves of malware bosses to secure the digital realm. Integrating turn-based combat with educational Kali Linux quizzes, WRAITH combines fun with cybersecurity learning.
 
 ---
 
@@ -47,7 +47,7 @@ Follow on-screen prompts to select difficulty, engage in battles, and answer qui
 
 ## Story
 
-In the shadows of the digital world, malware knights threaten network integrity. You are the Malware Knight, the last line of defense against these malicious threats. Defeat bosses like Pisher, Spammer, Cryptor, Injector, and RootGroot to secure the cyber realm.
+In the shadows of the digital world, Malware Knights threaten network integrity. You are the Malware Knight Guardian, the last line of defense against these malicious threats. Defeat bosses like Pisher, Spammer, Cryptor, Injector, and RootGroot to secure the cyber realm.
 
 ---
 
